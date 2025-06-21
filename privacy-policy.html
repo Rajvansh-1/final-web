@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | LightFX Studio</title>
+    <link rel="icon" type="image/png" href="favicon-32x32.png">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ffffff;
+            --secondary: #0a0a1a;
+            --accent: #D4AF37;
+            --accent-dark: #b38f2a;
+            --light-bg: rgba(10, 10, 26, 0.7);
+            --dark-text: #ffffff;
+            --light-text: #e0e0e0;
+            --section-padding: 100px;
+            --glow: 0 0 10px rgba(255, 255, 255, 0.3);
+            --accent-glow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: var(--secondary);
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: var(--primary);
+            text-shadow: var(--glow);
+            letter-spacing: 1px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: rgba(10, 10, 26, 0.8);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .logo img {
+            height: 60px;
+            margin-right: 15px;
+            filter: drop-shadow(0 0 5px var(--accent));
+        }
+        
+        .logo-text {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            text-shadow: var(--glow);
+            position: relative;
+        }
+        
+        .logo-text span {
+            color: var(--accent);
+            text-shadow: var(--accent-glow);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 40px;
+            position: relative;
+        }
+        
+        nav ul li a {
+            color: var(--dark-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+            position: relative;
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+            box-shadow: var(--accent-glow);
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent);
+            text-shadow: var(--accent-glow);
+        }
+        
+        /* Policy Content Styles */
+        .policy-hero {
+            height: 50vh;
+            background-image: url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1630&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .policy-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        
+        .policy-hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .policy-hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .policy-content {
+            padding: var(--section-padding) 0;
+            background-color: var(--secondary);
+        }
+        
+        .policy-section {
+            margin-bottom: 50px;
+            background: var(--light-bg);
+            padding: 40px;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .policy-section h2 {
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        
+        .policy-section p {
+            margin-bottom: 15px;
+            color: var(--light-text);
+        }
+        
+        .policy-section ul {
+            margin-left: 30px;
+            margin-bottom: 20px;
+            color: var(--light-text);
+        }
+        
+        .policy-section li {
+            margin-bottom: 10px;
+        }
+        
+        /* Footer Styles */
+        footer {
+            background: linear-gradient(to bottom, #05050f, #0a0a1a);
+            color: var(--dark-text);
+            padding: 80px 0 0;
+            position: relative;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-col h3 {
+            font-size: 22px;
+            margin-bottom: 25px;
+            position: relative;
+            color: var(--primary);
+        }
+        
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent);
+        }
+        
+        .footer-col p {
+            color: var(--light-text);
+            margin-bottom: 20px;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 15px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--primary);
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .footer-social a:hover {
+            background: var(--accent);
+            color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            color: var(--light-text);
+            font-size: 14px;
+        }
+        
+        .copyright a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .policy-hero-content h1 {
+                font-size: 36px;
+            }
+            
+            .policy-section {
+                padding: 30px 20px;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="header-container">
+                <a href="index.html" class="logo">
+                    <img src="assets/logo.png" alt="LightFX Studio">
+                    <span class="logo-text">LightFX <span>Studio</span></span>
+                </a>
+                
+                <nav>
+                    <ul id="navMenu">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#portfolio">Portfolio</a></li>
+                        <li><a href="index.html#feedback">Feedback</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Policy Hero Section -->
+    <section class="policy-hero">
+        <div class="policy-hero-content">
+            <h1>Privacy Policy</h1>
+            <p>Last updated: June 2025</p>
+        </div>
+    </section>
+
+    <!-- Policy Content -->
+    <section class="policy-content">
+        <div class="container">
+            <div class="policy-section">
+                <h2>1. Introduction</h2>
+                <p>Welcome to LightFX Studio ("we," "our," or "us"). We are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.</p>
+                <p>By accessing or using our services, you agree to the terms of this Privacy Policy. If you do not agree with our policies and practices, please do not use our services.</p>
+            </div>
+            
+            <div class="policy-section">
+                <h2>2. Information We Collect</h2>
+                <p>We collect several types of information from and about users of our website, including:</p>
+                <ul>
+                    <li><strong>Personal Information:</strong> Name, email address, phone number, postal address, and other contact details when you book our services or contact us.</li>
+                    <li><strong>Payment Information:</strong> Credit card details or other payment information when you make a purchase (processed securely by our payment processors).</li>
+                    <li><strong>Technical Data:</strong> IP address, browser type, operating system, and usage details collected automatically through cookies and similar technologies.</li>
+                    <li><strong>Photography Data:</strong> Images and videos captured during our photography sessions, as agreed in our service contracts.</li>
+                </ul>
+            </div>
+            
+            <div class="policy-section">
+                <h2>3. How We Use Your Information</h2>
+                <p>We use the information we collect for various purposes, including:</p>
+                <ul>
+                    <li>To provide and maintain our photography services</li>
+                    <li>To process your bookings and transactions</li>
+                    <li>To communicate with you about your sessions</li>
+                    <li>To improve our website and services</li>
+                    <li>To display portfolio work (with your consent)</li>
+                    <li>To comply with legal obligations</li>
+                </ul>
+            </div>
+            
+            <div class="policy-section">
+                <h2>4. Data Security</h2>
+                <p>We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. These include:</p>
+                <ul>
+                    <li>Secure servers and encrypted storage for digital images</li>
+                    <li>Restricted access to personal information</li>
+                    <li>Regular security assessments</li>
+                    <li>Secure payment processing</li>
+                </ul>
+                <p>However, no internet transmission or electronic storage is completely secure, so we cannot guarantee absolute security.</p>
+            </div>
+            
+            <div class="policy-section">
+                <h2>5. Your Rights</h2>
+                <p>Depending on your location, you may have certain rights regarding your personal information:</p>
+                <ul>
+                    <li><strong>Access:</strong> Request a copy of the personal data we hold about you.</li>
+                    <li><strong>Correction:</strong> Request correction of inaccurate or incomplete data.</li>
+                    <li><strong>Deletion:</strong> Request deletion of your personal data under certain circumstances.</li>
+                    <li><strong>Objection:</strong> Object to processing of your personal data.</li>
+                    <li><strong>Withdraw Consent:</strong> Withdraw previously given consent for specific uses.</li>
+                </ul>
+                <p>To exercise these rights, please contact us at <a href="mailto:privacy@lightfxstudio.com">privacy@lightfxstudio.com</a>.</p>
+            </div>
+            
+            <div class="policy-section">
+                <h2>6. Changes to This Policy</h2>
+                <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date. You are advised to review this Privacy Policy periodically for any changes.</p>
+            </div>
+            
+            <div class="policy-section">
+                <h2>7. Contact Us</h2>
+                <p>If you have any questions about this Privacy Policy, please contact us:</p>
+                <p>Email: <a href="mailto:privacy@lightfxstudio.com">privacy@lightfxstudio.com</a><br>
+                Phone: +91 99049 20480<br>
+                Address: LightFX Studio, Shop No.3, Near Harigar Farshan, Trikamnagar-2, Varachha, Surat</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <a href="index.html" class="logo">
+                        <img src="assets/logo-white.png" alt="LightFX Studio" style="height: 50px; margin-bottom: 20px; filter: drop-shadow(0 0 5px var(--accent))">
+                    </a>
+                    <p>Premium photography services in Surat. Capturing your most precious moments with elegance and artistry.</p>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/lightfxstudio/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="http://www.youtube.com/channel/UCIjHDr1xlz90D-Oj4kvWLhA" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.facebook.com/lightfxstudio" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#portfolio">Portfolio</a></li>
+                        <li><a href="index.html#feedback">Client Feedback</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html#services">Wedding Photography</a></li>
+                        <li><a href="index.html#services">Portrait Sessions</a></li>
+                        <li><a href="index.html#services">Commercial Photography</a></li>
+                        <li><a href="index.html#services">Event Coverage</a></li>
+                        <li><a href="index.html#services">Photo Editing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt" style="margin-right: 10px; color: var(--accent);"></i> LightFX Studio, Varachha, Surat</p>
+                    <p><i class="fas fa-phone-alt" style="margin-right: 10px; color: var(--accent);"></i> +91 99049 20480</p>
+                    <p><i class="fas fa-envelope" style="margin-right: 10px; color: var(--accent);"></i> lightfxstudio5@gmail.com</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 LightFX Studio. All Rights Reserved. | 
+                <a href="privacy-policy.html">Privacy Policy</a> | 
+                <a href="terms-of-service.html">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navMenu = document.getElementById('navMenu');
+            
+            if(mobileMenuBtn && navMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                    this.querySelector('i').classList.toggle('fa-times');
+                });
+            }
+            
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 100) {
+                    document.getElementById('header').classList.add('scrolled');
+                } else {
+                    document.getElementById('header').classList.remove('scrolled');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIGHTFX STUDIO | Professional Photography in Surat</title>
+    <link rel="icon" type="image/png" href="favicon-32x32.png">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2C3E50; /* Deep blue from logo */
+            --secondary: #FFFFFF; /* White */
+            --accent: #E74C3C; /* Vibrant accent color */
+            --accent-dark: #C0392B; /* Darker accent */
+            --light-bg: #F8F9FA; /* Light gray */
+            --dark-text: #333333; /* Dark gray */
+            --light-text: #7F8C8D; /* Light gray */
+            --section-padding: 80px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: var(--secondary);
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--secondary);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+        
+        .scrolled {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .logo-text span {
+            font-weight: 400;
+            font-style: italic;
+            display: block;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.7), rgba(44, 62, 80, 0.7)), url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            color: var(--secondary);
+            text-align: center;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero-subtitle {
+            font-size: 18px;
+            color: var(--accent);
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .hero-title {
+            font-size: 60px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-title span {
+            color: var(--accent);
+        }
+        
+        .hero-text {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            margin: 0 10px;
+        }
+        
+        .btn-primary {
+            background: var(--accent);
+            color: var(--secondary);
+        }
+        
+        .btn-primary:hover {
+            background: var(--accent-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(231, 76, 60, 0.3);
+        }
+        
+        .btn-outline {
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--secondary);
+            color: var(--primary);
+        }
+        
+        /* About Section */
+        .section {
+            padding: var(--section-padding) 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 42px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        .section-title p {
+            color: var(--accent);
+            font-size: 18px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 30px rgba(0,0,0,0.1);
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .about-img:hover img {
+            transform: scale(1.05);
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--light-text);
+        }
+        
+        /* Services Section */
+        .services {
+            background: var(--light-bg);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: var(--secondary);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .service-img {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+        
+        .service-content {
+            padding: 30px;
+        }
+        
+        .service-icon {
+            font-size: 40px;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        
+        .service-content h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        
+        .service-content p {
+            color: var(--light-text);
+            margin-bottom: 20px;
+        }
+        
+        /* Why Choose Us Section */
+        .why-us-points {
+            margin-top: 40px;
+        }
+        
+        .why-us-point {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+        
+        .why-us-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(231, 76, 60, 0.1);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: var(--accent);
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .why-us-text h4 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .why-us-text p {
+            color: var(--light-text);
+        }
+        
+        /* Portfolio Section */
+        .portfolio-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+        
+        .filter-btn {
+            padding: 8px 25px;
+            background: transparent;
+            border: 1px solid rgba(231, 76, 60, 0.3);
+            color: var(--primary);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--accent);
+            color: var(--secondary);
+            border-color: var(--accent);
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .portfolio-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            aspect-ratio: 1/1;
+        }
+        
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(44, 62, 80, 0.8), transparent);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+        .portfolio-category {
+            color: var(--accent);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        
+        .portfolio-title {
+            color: var(--secondary);
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        
+        /* Client Feedback Section */
+        .feedback {
+            background: var(--light-bg);
+            padding: var(--section-padding) 0;
+        }
+        
+        .feedback-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feedback-card {
+            background: var(--secondary);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .feedback-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .feedback-text:before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: -10px;
+            font-size: 50px;
+            color: rgba(231, 76, 60, 0.1);
+            font-family: serif;
+            line-height: 1;
+        }
+        
+        .feedback-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+            border: 2px solid var(--accent);
+        }
+        
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            color: var(--light-text);
+            font-size: 14px;
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            gap: 50px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-info h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+        
+        .contact-info p {
+            color: var(--light-text);
+            margin-bottom: 40px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(231, 76, 60, 0.1);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            color: var(--accent);
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .contact-item-text h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .contact-item-text p, .contact-item-text a {
+            color: var(--light-text);
+            text-decoration: none;
+        }
+        
+        .contact-item-text a:hover {
+            color: var(--accent);
+        }
+        
+        .contact-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .contact-social a {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(231, 76, 60, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--accent);
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+        
+        .contact-social a:hover {
+            background: var(--accent);
+            color: var(--secondary);
+        }
+        
+        /* Contact Form */
+        .contact-form {
+            flex: 1;
+            background: var(--light-bg);
+            border-radius: 10px;
+            padding: 40px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+        }
+        
+        .submit-btn {
+            background: var(--accent);
+            color: var(--secondary);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background: var(--accent-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(231, 76, 60, 0.3);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: var(--secondary);
+            padding: 80px 0 0;
+            position: relative;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-col h3 {
+            font-size: 20px;
+            margin-bottom: 25px;
+            position: relative;
+            color: var(--secondary);
+        }
+        
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent);
+        }
+        
+        .footer-col p {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--secondary);
+            transition: all 0.3s;
+        }
+        
+        .footer-social a:hover {
+            background: var(--accent);
+            color: var(--secondary);
+        }
+        
+        /* Footer Map */
+        .footer-map-col {
+            grid-column: span 2;
+        }
+        
+        .footer-map {
+            height: 250px;
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .footer-map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+        }
+        
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 30px;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+            z-index: 100;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+        }
+        
+        /* Instagram Float */
+        .instagram-float {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            box-shadow: 0 5px 15px rgba(225, 48, 108, 0.3);
+            z-index: 100;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .instagram-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(225, 48, 108, 0.4);
+        }
+        
+        /* Privacy Policy & Terms Pages */
+        .legal-page {
+            padding: 100px 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .legal-page h1 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            color: var(--primary);
+        }
+        
+        .legal-page h2 {
+            font-size: 24px;
+            margin: 30px 0 15px;
+            color: var(--primary);
+        }
+        
+        .legal-page p {
+            margin-bottom: 15px;
+            color: var(--dark-text);
+            line-height: 1.8;
+        }
+        
+        .legal-page ul {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+        
+        .legal-page li {
+            margin-bottom: 10px;
+            color: var(--dark-text);
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-content, .contact-container {
+                flex-direction: column;
+            }
+            
+            .about-img, .contact-info {
+                margin-bottom: 40px;
+            }
+            
+            .footer-map-col {
+                grid-column: span 1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 48px;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--secondary);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.5s;
+            }
+            
+            nav ul.active {
+                left: 0;
+            }
+            
+            nav ul li {
+                margin: 15px 0;
+            }
+            
+            .hero-btns {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .btn {
+                margin: 0;
+                width: 100%;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 36px;
+            }
+            
+            .section-title h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="header-container">
+                <a href="#" class="logo">
+                    <img src="assets/logo.png" alt="LightFX Studio">
+                    <div class="logo-text">
+                        LIGHTFX STUDIO
+                        <span>Every click captures elegance</span>
+                    </div>
+                </a>
+                
+                <nav>
+                    <ul id="navMenu">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#feedback">Feedback</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <p class="hero-subtitle">Professional Photography in Surat</p>
+            <h1 class="hero-title">Capture Your <span>Special Moments</span></h1>
+            <p class="hero-text">Affordable photography and videography services for weddings, events, and businesses in Surat. Quality work at local prices.</p>
+            <div class="hero-btns">
+                <a href="#contact" class="btn btn-primary">Book Now</a>
+                <a href="tel:+919904920480" class="btn btn-outline">Call Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <p>Our Story</p>
+                <h2>About LightFX Studio</h2>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="assets/studio.jpg" alt="Our Studio in Varachha">
+                </div>
+                
+                <div class="about-text">
+                    <h3>Varachha's Trusted Photography Studio</h3>
+                    <p>Welcome to LightFX Studio, your local photography experts in Surat's Varachha area. We specialize in capturing life's precious moments with professional quality at prices that work for our community.</p>
+                    <p>Our Gujarati-speaking team understands local traditions and customs, ensuring we capture your events exactly how you want them remembered.</p>
+                    <p>From weddings to business photos, we deliver beautiful results quickly - often with same-day previews and fast turnaround times.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <p>Our Services</p>
+                <h2>What We Offer</h2>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="assets/wedding-photo.jpg" alt="Wedding Photography">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-camera-retro"></i>
+                        </div>
+                        <h3>Wedding Photography</h3>
+                        <p>Beautiful coverage of your wedding day from pre-ceremony to reception. Packages for all budgets.</p>
+                        <a href="#contact" class="btn btn-primary">Book Now</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="assets/event-video.jpg" alt="Event Videography">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h3>Event Videography</h3>
+                        <p>Professional video coverage of weddings, engagements, and other special occasions.</p>
+                        <a href="#contact" class="btn btn-primary">Book Now</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="assets/family-photo.jpg" alt="Family Portraits">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Family Portraits</h3>
+                        <p>Beautiful family photos in our studio or at a location of your choice in Surat.</p>
+                        <a href="#contact" class="btn btn-primary">Book Now</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="assets/business-photo.jpg" alt="Business Photography">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h3>Business Photography</h3>
+                        <p>Professional photos for your business, products, or team at affordable rates.</p>
+                        <a href="#contact" class="btn btn-primary">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <p>Why Local Families Choose Us</p>
+                <h2>Our Advantages</h2>
+            </div>
+            
+            <div class="why-us-points">
+                <div class="why-us-point">
+                    <div class="why-us-icon">
+                        <i class="fas fa-rupee-sign"></i>
+                    </div>
+                    <div class="why-us-text">
+                        <h4>Affordable for Local Budgets</h4>
+                        <p>We offer competitive pricing without hidden costs, making professional photography accessible to Varachha families.</p>
+                    </div>
+                </div>
+                
+                <div class="why-us-point">
+                    <div class="why-us-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div class="why-us-text">
+                        <h4>Premium Quality Equipment</h4>
+                        <p>We use professional cameras and lighting to ensure your photos look amazing.</p>
+                    </div>
+                </div>
+                
+                <div class="why-us-point">
+                    <div class="why-us-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="why-us-text">
+                        <h4>Fast Delivery</h4>
+                        <p>We understand you want to share your photos quickly - often delivering previews the same day.</p>
+                    </div>
+                </div>
+                
+                <div class="why-us-point">
+                    <div class="why-us-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <div class="why-us-text">
+                        <h4>Local Understanding</h4>
+                        <p>We know Gujarati traditions and can suggest poses and shots that work for our culture.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="section" id="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <p>Our Recent Work</p>
+                <h2>Portfolio Gallery</h2>
+            </div>
+            
+            <div class="portfolio-filter">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="wedding">Weddings</button>
+                <button class="filter-btn" data-filter="family">Family</button>
+                <button class="filter-btn" data-filter="business">Business</button>
+            </div>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-category="wedding">
+                    <img src="assets/wedding1.jpg" alt="Wedding Photography">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Wedding</span>
+                        <h3 class="portfolio-title">Mehndi Ceremony</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="wedding">
+                    <img src="assets/wedding2.jpg" alt="Wedding Photography">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Wedding</span>
+                        <h3 class="portfolio-title">Bridal Portraits</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="family">
+                    <img src="assets/family1.jpg" alt="Family Photography">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Family</span>
+                        <h3 class="portfolio-title">Anniversary Shoot</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="business">
+                    <img src="assets/business1.jpg" alt="Business Photography">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Business</span>
+                        <h3 class="portfolio-title">Jewelry Store</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="family">
+                    <img src="assets/family2.jpg" alt="Family Photography">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Family</span>
+                        <h3 class="portfolio-title">Newborn Baby</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="business">
+                    <img src="assets/business2.jpg" alt="Business Photography">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Business</span>
+                        <h3 class="portfolio-title">Restaurant Menu</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Feedback Section -->
+    <section class="section feedback" id="feedback">
+        <div class="container">
+            <div class="section-title">
+                <p>Client Experiences</p>
+                <h2>What Our Clients Say</h2>
+            </div>
+            
+            <div class="feedback-grid">
+                <div class="feedback-card">
+                    <p class="feedback-text">"LightFX Studio captured my daughter's wedding beautifully. The photos were ready quickly and the prices were very reasonable compared to other studios in Surat."</p>
+                    <div class="feedback-author">
+                        <div class="author-img">
+                            <img src="assets/client1.jpg" alt="Mrs. Patel">
+                        </div>
+                        <div class="author-info">
+                            <h4>Mrs. Patel</h4>
+                            <p>Wedding Client</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="feedback-card">
+                    <p class="feedback-text">"For our small business, we needed professional product photos. LightFX delivered excellent quality at a price we could afford. Highly recommend!"</p>
+                    <div class="feedback-author">
+                        <div class="author-img">
+                            <img src="assets/client2.jpg" alt="Mr. Shah">
+                        </div>
+                        <div class="author-info">
+                            <h4>Mr. Shah</h4>
+                            <p>Business Owner</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="feedback-card">
+                    <p class="feedback-text">"Our family photos came out wonderful! The photographer made everyone comfortable, especially the children. We'll definitely use them again."</p>
+                    <div class="feedback-author">
+                        <div class="author-img">
+                            <img src="assets/client3.jpg" alt="The Desai Family">
+                        </div>
+                        <div class="author-info">
+                            <h4>Desai Family</h4>
+                            <p>Family Portrait</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <p>Get In Touch</p>
+                <h2>Contact Us</h2>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h2>Visit Our Studio in Varachha</h2>
+                    <p>We're conveniently located in Trikamnagar-2, making it easy for local clients to visit us. Call ahead to schedule an appointment.</p>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-item-text">
+                            <h4>Our Address</h4>
+                            <p>Lightfx Studio, Shop No.3, Near Harigar Farshan, Trikamnagar-2, Varachha, Surat</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-item-text">
+                            <h4>Call Us</h4>
+                            <a href="tel:+919904920480">+91 99049 20480</a><br>
+                            <a href="tel:+919712345678">+91 97123 45678</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-item-text">
+                            <h4>Email Us</h4>
+                            <a href="mailto:lightfxstudio5@gmail.com">lightfxstudio5@gmail.com</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-item-text">
+                            <h4>Working Hours</h4>
+                            <p>Monday - Saturday: 9:00 AM - 7:00 PM<br>
+                            Sunday: By Appointment Only</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-social">
+                        <a href="https://www.instagram.com/lightfxstudio/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="http://www.youtube.com/channel/UCIjHDr1xlz90D-Oj4kvWLhA" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.facebook.com/lightfxstudio" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm" action="form-handler.php" method="POST">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" class="form-control" placeholder="Phone Number" required>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option value="">Select Service</option>
+                                <option>Wedding Photography</option>
+                                <option>Event Videography</option>
+                                <option>Family Portraits</option>
+                                <option>Business Photography</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <a href="#" class="logo">
+                        <img src="assets/logo-white.png" alt="LightFX Studio" style="height: 50px; margin-bottom: 15px;">
+                    </a>
+                    <p>Varachha's trusted photography studio offering professional services at local prices. Serving Surat since 2025.</p>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/lightfxstudio/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="http://www.youtube.com/channel/UCIjHDr1xlz90D-Oj4kvWLhA" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.facebook.com/lightfxstudio" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#feedback">Client Feedback</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Our Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#services">Wedding Photography</a></li>
+                        <li><a href="#services">Event Videography</a></li>
+                        <li><a href="#services">Family Portraits</a></li>
+                        <li><a href="#services">Business Photography</a></li>
+                        <li><a href="#services">Same Day Photos</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col footer-map-col">
+                    <h3>Our Location</h3>
+                    <div class="footer-map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3719.123456789012!2d72.12345678901234!3d21.123456789012345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDA3JzI0LjQiTiA3MsKwMDcnMjQuNCJF!5e0!3m2!1sen!2sin!4v1234567890123" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                    <p style="margin-top: 15px;">Lightfx Studio, Shop No.3, Near Harigar Farshan, Trikamnagar-2, Varachha, Surat</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 LightFX Studio. All Rights Reserved. | <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms-of-service.html">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/919904920480" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
+    <!-- Instagram Float -->
+    <a href="https://www.instagram.com/lightfxstudio/" class="instagram-float" target="_blank">
+        <i class="fab fa-instagram"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('active');
+            this.querySelector('i').classList.toggle('fa-times');
+        });
+        
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                document.getElementById('navMenu').classList.remove('active');
+                document.querySelector('#mobileMenuBtn i').classList.remove('fa-times');
+                document.querySelector('#mobileMenuBtn i').classList.add('fa-bars');
+            });
+        });
+        
+        // Portfolio Filter
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filter = button.getAttribute('data-filter');
+                
+                portfolioItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 100) {
+                document.getElementById('header').classList.add('scrolled');
+            } else {
+                document.getElementById('header').classList.remove('scrolled');
+            }
+        });
+        
+        // Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will contact you soon.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
