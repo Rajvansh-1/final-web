@@ -4,22 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LIGHTFX STUDIO | Luxury Photography in Surat</title>
+    <meta name="description" content="Premium photography and videography services in Surat. Specializing in weddings, portraits, and commercial photography with a luxurious touch.">
+    <meta name="keywords" content="photography Surat, wedding photography, portrait studio, commercial photography, videography, LIGHTfx STUDIO">
     <link rel="icon" type="image/png" href="favicon-32x32.png">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #ffffff; /* White */
-            --secondary: #0a0a1a; /* Deep space blue */
+            --primary: #F5F5F0; /* Cream white */
+            --secondary: #FFFDF8; /* Warm white */
             --accent: #D4AF37; /* Golden */
             --accent-dark: #b38f2a; /* Darker gold */
-            --light-bg: rgba(10, 10, 26, 0.7); /* Semi-transparent dark */
-            --dark-text: #ffffff; /* White */
-            --light-text: #e0e0e0; /* Light gray */
+            --light-bg: rgba(245, 245, 240, 0.7); /* Semi-transparent cream */
+            --dark-text: #333333; /* Dark gray for text */
+            --light-text: #666666; /* Lighter gray */
             --section-padding: 100px;
-            --glow: 0 0 10px rgba(255, 255, 255, 0.3);
-            --accent-glow: 0 0 10px rgba(212, 175, 55, 0.5);
+            --glow: 0 0 10px rgba(212, 175, 55, 0.1);
+            --accent-glow: 0 0 10px rgba(212, 175, 55, 0.3);
         }
         
         * {
@@ -39,8 +41,7 @@
         h1, h2, h3, h4 {
             font-family: 'Playfair Display', serif;
             font-weight: 600;
-            color: var(--primary);
-            text-shadow: var(--glow);
+            color: var(--dark-text);
             letter-spacing: 1px;
         }
         
@@ -64,18 +65,19 @@
         
         /* Header */
         header {
-            background-color: rgba(10, 10, 26, 0.8);
+            background-color: rgba(255, 253, 248, 0.9);
             position: fixed;
             width: 100%;
             z-index: 1000;
             transition: all 0.5s cubic-bezier(0.65, 0, 0.35, 1);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
         }
         
         .scrolled {
-            background-color: rgba(5, 5, 15, 0.95);
-            box-shadow: 0 5px 30px rgba(212, 175, 55, 0.2);
+            background-color: rgba(255, 253, 248, 0.95);
+            box-shadow: 0 5px 30px rgba(212, 175, 55, 0.1);
         }
         
         .container {
@@ -111,8 +113,7 @@
         .logo-text {
             font-size: 28px;
             font-weight: 700;
-            color: var(--primary);
-            text-shadow: var(--glow);
+            color: var(--dark-text);
             position: relative;
         }
         
@@ -159,7 +160,6 @@
         
         nav ul li a:hover {
             color: var(--accent);
-            text-shadow: var(--accent-glow);
         }
         
         .mobile-menu-btn {
@@ -167,14 +167,12 @@
             font-size: 28px;
             cursor: pointer;
             color: var(--accent);
-            text-shadow: var(--accent-glow);
             transition: all 0.3s;
             z-index: 1001;
         }
         
         .mobile-menu-btn:hover {
-            color: var(--primary);
-            text-shadow: var(--glow);
+            color: var(--dark-text);
         }
         
         /* Hero Section */
@@ -187,6 +185,7 @@
             padding-top: 100px;
             position: relative;
             overflow: hidden;
+            background-color: var(--primary);
         }
         
         .hero::before {
@@ -200,29 +199,68 @@
             z-index: -1;
         }
         
-        .hero-bg {
+        /* Slider Styles */
+        .slider-container {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            overflow: hidden;
             z-index: -2;
-            transition: opacity 1.5s ease-in-out;
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
+        }
+        
+        .slider {
+            display: flex;
+            width: 400%;
+            height: 100%;
+            transition: transform 1s ease-in-out;
+        }
+        
+        .slide {
+            flex: 1;
             background-size: cover;
+            background-position: center;
+            position: relative;
         }
         
-        .hero-bg.active {
-            opacity: 1;
-        }
-        
-        .hero-bg img {
+        .slide::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            filter: brightness(0.7) contrast(1.2);
+            background-color: rgba(0,0,0,0.3);
+        }
+        
+        .slide-1 { background-image: url('assets/bg1.JPG'); }
+        .slide-2 { background-image: url('assets/bg2.png'); }
+        .slide-3 { background-image: url('assets/bg3.png'); }
+        .slide-4 { background-image: url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1630&q=80'); }
+        
+        .slider-nav {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 2;
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .slider-dot.active {
+            background-color: var(--accent);
+            transform: scale(1.2);
         }
         
         .hero-content {
@@ -246,7 +284,6 @@
             margin-bottom: 20px;
             letter-spacing: 3px;
             text-transform: uppercase;
-            text-shadow: var(--accent-glow);
             opacity: 0;
             transform: translateY(30px);
             animation: fadeInUp 1s 0.3s forwards;
@@ -263,7 +300,6 @@
         
         .hero-title span {
             color: var(--accent);
-            text-shadow: var(--accent-glow);
             position: relative;
         }
         
@@ -275,7 +311,6 @@
             width: 100%;
             height: 3px;
             background: var(--accent);
-            box-shadow: var(--accent-glow);
             transform: scaleX(0);
             transform-origin: left;
             animation: scaleIn 1.5s 1s forwards;
@@ -340,8 +375,7 @@
         
         .btn-primary {
             background: var(--accent);
-            color: var(--secondary);
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            color: #fff;
             box-shadow: 0 0 15px var(--accent), 0 0 30px rgba(212, 175, 55, 0.3);
         }
         
@@ -352,22 +386,20 @@
         }
         
         .btn-outline {
-            border: 2px solid var(--primary);
-            color: var(--primary);
+            border: 2px solid var(--dark-text);
+            color: var(--dark-text);
             background: transparent;
-            box-shadow: 0 0 15px var(--primary), inset 0 0 15px var(--primary);
         }
         
         .btn-outline:hover {
-            background: var(--primary);
-            color: var(--secondary);
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-            box-shadow: 0 0 30px var(--primary), inset 0 0 20px var(--primary);
+            background: var(--dark-text);
+            color: var(--primary);
+            box-shadow: 0 0 30px rgba(51, 51, 51, 0.2);
         }
         
         /* Parallax Sections */
         .parallax-section {
-            height: 60vh;
+            height: 80vh; /* Made longer as requested */
             background-attachment: fixed;
             background-position: center;
             background-repeat: no-repeat;
@@ -385,7 +417,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.3);
         }
         
         .parallax-content {
@@ -399,7 +431,7 @@
         .parallax-content h2 {
             font-size: 48px;
             margin-bottom: 20px;
-            color: var(--accent);
+            color: var(--primary);
         }
         
         .parallax-content p {
@@ -412,6 +444,7 @@
             padding: var(--section-padding) 0;
             position: relative;
             overflow: hidden;
+            background-color: var(--primary);
         }
         
         .section::before {
@@ -447,7 +480,6 @@
             width: 100px;
             height: 3px;
             background: var(--accent);
-            box-shadow: var(--accent-glow);
         }
         
         .section-title p {
@@ -456,7 +488,6 @@
             letter-spacing: 3px;
             text-transform: uppercase;
             margin-bottom: 15px;
-            text-shadow: var(--accent-glow);
         }
         
         .about-content {
@@ -470,7 +501,7 @@
             flex: 1;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.1);
             transform-style: preserve-3d;
             perspective: 1000px;
             position: relative;
@@ -485,7 +516,7 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(45deg, var(--primary), var(--accent));
-            opacity: 0.3;
+            opacity: 0.1;
             z-index: -1;
             filter: blur(20px);
         }
@@ -523,7 +554,6 @@
             width: 60px;
             height: 3px;
             background: var(--accent);
-            box-shadow: var(--accent-glow);
         }
         
         .about-text p {
@@ -535,7 +565,7 @@
         
         /* Services Section */
         .services {
-            background: linear-gradient(to bottom, rgba(10, 10, 26, 0.9), rgba(5, 5, 15, 0.9));
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
             position: relative;
         }
         
@@ -561,10 +591,10 @@
         }
         
         .service-card {
-            background: var(--light-bg);
+            background: var(--secondary);
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
             transition: all 0.8s cubic-bezier(0.65, 0, 0.35, 1);
             position: relative;
             border: 1px solid rgba(212, 175, 55, 0.1);
@@ -583,8 +613,8 @@
         }
         
         .service-card:hover {
-            transform: translateY(-15px) rotateX(5deg) rotateY(5deg);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 0 0 30px rgba(212, 175, 55, 0.2);
+            transform: translateY(-15px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1), 0 0 30px rgba(212, 175, 55, 0.1);
             border: 1px solid rgba(212, 175, 55, 0.3);
         }
         
@@ -601,7 +631,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, transparent 60%, rgba(10, 10, 26, 0.8));
+            background: linear-gradient(to bottom, transparent 60%, rgba(245, 245, 240, 0.8));
             z-index: 1;
         }
         
@@ -625,7 +655,6 @@
             font-size: 50px;
             color: var(--accent);
             margin-bottom: 25px;
-            text-shadow: var(--accent-glow);
             transition: all 0.5s;
         }
         
@@ -648,7 +677,6 @@
             width: 40px;
             height: 2px;
             background: var(--accent);
-            box-shadow: var(--accent-glow);
             transition: width 0.5s;
         }
         
@@ -675,16 +703,17 @@
             display: flex;
             align-items: flex-start;
             margin-bottom: 40px;
-            background: var(--light-bg);
+            background: var(--secondary);
             padding: 30px;
             border-radius: 15px;
             transition: all 0.5s;
             border: 1px solid rgba(212, 175, 55, 0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
         
         .why-us-point:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(212, 175, 55, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 0 0 20px rgba(212, 175, 55, 0.1);
             border: 1px solid rgba(212, 175, 55, 0.3);
         }
         
@@ -700,17 +729,15 @@
             color: var(--accent);
             margin-right: 25px;
             flex-shrink: 0;
-            text-shadow: var(--accent-glow);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
             transition: all 0.5s;
         }
         
         .why-us-point:hover .why-us-icon {
             transform: rotateY(180deg);
-            background: rgba(255, 255, 255, 0.2);
-            color: var(--primary);
-            text-shadow: var(--glow);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--dark-text);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
         }
         
         .why-us-text h4 {
@@ -726,8 +753,7 @@
             left: 0;
             width: 30px;
             height: 2px;
-            background: var(--primary);
-            box-shadow: var(--glow);
+            background: var(--dark-text);
             transition: width 0.5s;
         }
         
@@ -754,13 +780,12 @@
             padding: 12px 35px;
             background: transparent;
             border: 2px solid rgba(212, 175, 55, 0.3);
-            color: var(--primary);
+            color: var(--dark-text);
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.5s;
             font-family: 'Playfair Display', serif;
             letter-spacing: 1px;
-            text-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
             position: relative;
             overflow: hidden;
         }
@@ -782,9 +807,8 @@
         
         .filter-btn.active, .filter-btn:hover {
             background: var(--accent);
-            color: var(--secondary);
+            color: #fff;
             border-color: var(--accent);
-            text-shadow: none;
             box-shadow: 0 0 15px var(--accent);
         }
         
@@ -801,13 +825,13 @@
             aspect-ratio: 1/1;
             transform-style: preserve-3d;
             perspective: 1000px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             transition: all 0.8s cubic-bezier(0.65, 0, 0.35, 1);
         }
         
         .portfolio-item:hover {
-            transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 0 0 30px rgba(212, 175, 55, 0.2);
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2), 0 0 30px rgba(212, 175, 55, 0.1);
         }
         
         .portfolio-item img {
@@ -827,7 +851,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to top, rgba(10, 10, 26, 0.9), transparent);
+            background: linear-gradient(to top, rgba(51, 51, 51, 0.9), transparent);
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -848,19 +872,17 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 10px;
-            text-shadow: var(--accent-glow);
         }
         
         .portfolio-title {
             color: var(--primary);
             font-size: 26px;
             margin-bottom: 15px;
-            text-shadow: var(--glow);
         }
         
         /* Client Feedback Section */
         .feedback {
-            background: linear-gradient(to bottom, rgba(5, 5, 15, 0.9), rgba(10, 10, 26, 0.9));
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
             padding: var(--section-padding) 0;
             position: relative;
         }
@@ -878,101 +900,66 @@
             z-index: 0;
         }
         
-        .feedback-grid {
+        /* Google Reviews Section */
+        .google-reviews {
+            padding: var(--section-padding) 0;
+            background-color: var(--primary);
+        }
+
+        .reviews-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            position: relative;
-            z-index: 1;
+            gap: 30px;
+            margin-top: 50px;
         }
-        
-        .feedback-card {
-            background: var(--light-bg);
+
+        .review-card {
+            background: var(--secondary);
             border-radius: 15px;
-            padding: 40px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-            transition: all 0.5s;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             border: 1px solid rgba(212, 175, 55, 0.1);
-            position: relative;
-            overflow: hidden;
+            transition: all 0.3s ease;
         }
-        
-        .feedback-card::before {
-            content: '"';
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            font-size: 120px;
-            color: rgba(212, 175, 55, 0.05);
-            font-family: serif;
-            line-height: 1;
-            z-index: 0;
-        }
-        
-        .feedback-card:hover {
+
+        .review-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 0 0 30px rgba(212, 175, 55, 0.2);
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
         }
-        
-        .feedback-text {
-            font-style: italic;
-            margin-bottom: 30px;
-            position: relative;
-            padding-left: 30px;
-            font-size: 18px;
-            line-height: 1.8;
-            color: var(--light-text);
-            z-index: 1;
-        }
-        
-        .feedback-text:before {
-            content: '"';
-            position: absolute;
-            left: 0;
-            top: -20px;
-            font-size: 60px;
-            color: rgba(212, 175, 55, 0.1);
-            font-family: serif;
-            line-height: 1;
-        }
-        
-        .feedback-author {
+
+        .review-header {
             display: flex;
             align-items: center;
+            margin-bottom: 20px;
         }
-        
-        .author-img {
-            width: 70px;
-            height: 70px;
+
+        .review-avatar {
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            overflow: hidden;
-            margin-right: 20px;
-            border: 2px solid var(--accent);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
-            transition: all 0.5s;
-        }
-        
-        .feedback-card:hover .author-img {
-            transform: rotateY(180deg);
-            border-color: var(--primary);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-        }
-        
-        .author-img img {
-            width: 100%;
-            height: 100%;
             object-fit: cover;
+            margin-right: 15px;
+            border: 2px solid var(--accent);
         }
-        
-        .author-info h4 {
-            font-size: 20px;
+
+        .review-author {
+            font-weight: 600;
             margin-bottom: 5px;
         }
-        
-        .author-info p {
+
+        .review-stars {
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+
+        .review-date {
+            font-size: 14px;
             color: var(--light-text);
-            font-size: 16px;
+        }
+
+        .review-text {
+            line-height: 1.6;
+            color: var(--light-text);
         }
         
         /* Contact Section */
@@ -1002,7 +989,6 @@
             width: 80px;
             height: 3px;
             background: var(--accent);
-            box-shadow: var(--accent-glow);
         }
         
         .contact-info p {
@@ -1035,16 +1021,14 @@
             color: var(--accent);
             margin-right: 25px;
             flex-shrink: 0;
-            text-shadow: var(--accent-glow);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
             transition: all 0.5s;
         }
         
         .contact-item:hover .contact-icon {
-            background: rgba(255, 255, 255, 0.2);
-            color: var(--primary);
-            text-shadow: var(--glow);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--dark-text);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
         }
         
         .contact-item-text h4 {
@@ -1061,8 +1045,7 @@
         }
         
         .contact-item-text a:hover {
-            color: var(--primary);
-            text-shadow: var(--glow);
+            color: var(--accent);
         }
         
         .contact-social {
@@ -1082,25 +1065,23 @@
             color: var(--accent);
             font-size: 20px;
             transition: all 0.5s;
-            text-shadow: var(--accent-glow);
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
         }
         
         .contact-social a:hover {
             background: var(--accent);
-            color: var(--secondary);
+            color: #fff;
             transform: translateY(-5px);
             box-shadow: 0 0 25px var(--accent);
-            text-shadow: none;
         }
         
         /* Contact Form */
         .contact-form {
             flex: 1;
-            background: var(--light-bg);
+            background: var(--secondary);
             border-radius: 15px;
             padding: 50px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
             border: 1px solid rgba(212, 175, 55, 0.1);
             transition: all 0.5s;
             position: relative;
@@ -1109,7 +1090,7 @@
         
         .contact-form:hover {
             border: 1px solid rgba(212, 175, 55, 0.3);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 0 0 30px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1), 0 0 30px rgba(212, 175, 55, 0.1);
         }
         
         .contact-form::before {
@@ -1136,20 +1117,19 @@
             border-radius: 8px;
             font-size: 16px;
             transition: all 0.5s;
-            background: rgba(10, 10, 26, 0.5);
-            color: var(--light-text);
+            background: var(--primary);
+            color: var(--dark-text);
             font-family: 'Montserrat', sans-serif;
         }
         
         .form-control::placeholder {
-            color: rgba(224, 224, 224, 0.5);
+            color: rgba(102, 102, 102, 0.5);
         }
         
         .form-control:focus {
             outline: none;
             border-color: var(--accent);
             box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
-            background: rgba(10, 10, 26, 0.8);
         }
         
         textarea.form-control {
@@ -1158,7 +1138,7 @@
         
         .submit-btn {
             background: var(--accent);
-            color: var(--secondary);
+            color: #fff;
             border: none;
             padding: 18px 40px;
             border-radius: 50px;
@@ -1169,7 +1149,6 @@
             width: 100%;
             font-family: 'Playfair Display', serif;
             letter-spacing: 1px;
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
             box-shadow: 0 0 15px var(--accent);
             position: relative;
             overflow: hidden;
@@ -1197,7 +1176,7 @@
         
         /* Footer */
         footer {
-            background: linear-gradient(to bottom, #05050f, #0a0a1a);
+            background: linear-gradient(to bottom, var(--primary), #e8e5d8);
             color: var(--dark-text);
             padding: 100px 0 0;
             position: relative;
@@ -1230,8 +1209,7 @@
             font-size: 24px;
             margin-bottom: 30px;
             position: relative;
-            color: var(--primary);
-            text-shadow: var(--glow);
+            color: var(--dark-text);
         }
         
         .footer-col h3:after {
@@ -1242,7 +1220,6 @@
             width: 60px;
             height: 2px;
             background: var(--accent);
-            box-shadow: var(--accent-glow);
         }
         
         .footer-col p {
@@ -1267,7 +1244,6 @@
             position: absolute;
             left: 0;
             color: var(--accent);
-            text-shadow: var(--accent-glow);
             transition: all 0.3s;
         }
         
@@ -1283,8 +1259,7 @@
         }
         
         .footer-links a:hover {
-            color: var(--primary);
-            text-shadow: var(--glow);
+            color: var(--accent);
             padding-left: 5px;
         }
         
@@ -1302,19 +1277,17 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            color: var(--primary);
+            color: var(--accent);
             font-size: 18px;
             transition: all 0.5s;
-            text-shadow: var(--glow);
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
         }
         
         .footer-social a:hover {
-            background: var(--primary);
-            color: var(--secondary);
+            background: var(--accent);
+            color: #fff;
             transform: translateY(-5px);
-            box-shadow: 0 0 25px var(--primary);
-            text-shadow: none;
+            box-shadow: 0 0 25px var(--accent);
         }
         
         /* Footer Map */
@@ -1327,13 +1300,13 @@
             width: 100%;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
             border: 1px solid rgba(212, 175, 55, 0.2);
             transition: all 0.5s;
         }
         
         .footer-map:hover {
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 0 0 30px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2), 0 0 30px rgba(212, 175, 55, 0.2);
             border: 1px solid rgba(212, 175, 55, 0.4);
         }
         
@@ -1341,7 +1314,6 @@
             width: 100%;
             height: 100%;
             border: none;
-            filter: grayscale(50%) contrast(1.2) brightness(0.8);
         }
         
         .copyright {
@@ -1355,117 +1327,122 @@
         }
         
         .copyright a {
-            color: var(--primary);
+            color: var(--accent);
             text-decoration: none;
-            text-shadow: var(--glow);
         }
         
-/* ===== Fixed Floating Buttons ===== */
-/* WhatsApp & Instagram Buttons */
-.float-buttons {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    z-index: 9999; /* Ensures it stays above everything */
-}
+        /* ===== Fixed Floating Buttons ===== */
+        /* WhatsApp & Instagram Buttons */
+        .float-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 9999;
+        }
 
-.instagram-float {
-    position: fixed;
-    bottom: 30px;
-    left: 30px;
-    z-index: 9999;
-}
+        .instagram-float {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 9999;
+        }
 
-.float-btn {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 28px;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
-    text-decoration: none;
-    animation: pulse 2s infinite;
-    color: white;
-}
+        .float-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 28px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            animation: pulse 2s infinite;
+            color: white;
+        }
 
-.whatsapp-float {
-    background: #25D366;
-}
+        .whatsapp-float {
+            background: #25D366;
+        }
 
-.instagram-float .float-btn {
-    background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
-}
+        .instagram-float .float-btn {
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+        }
 
-.float-btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
-}
+        .float-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
 
-/* Back-to-Top Button */
-.back-to-top {
-    position: fixed;
-    bottom: 110px;
-    right: 30px;
-    width: 50px;
-    height: 50px;
-    background: rgba(212, 175, 55, 0.2);
-    color: var(--accent);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
-    z-index: 9999;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.5s;
-    text-decoration: none;
-    border: 1px solid rgba(212, 175, 55, 0.3);
-}
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
 
-.back-to-top.active {
-    opacity: 1;
-    visibility: visible;
-}
+        /* Back-to-Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 110px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s;
+            text-decoration: none;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
 
-.back-to-top:hover {
-    background: var(--accent);
-    color: var(--secondary);
-    box-shadow: 0 0 25px var(--accent);
-}
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
 
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-    .float-buttons {
-        bottom: 20px;
-        right: 20px;
-    }
-    
-    .instagram-float {
-        bottom: 20px;
-        left: 20px;
-    }
-    
-    .float-btn {
-        width: 50px;
-        height: 50px;
-        font-size: 24px;
-    }
-    
-    .back-to-top {
-        bottom: 90px;
-        right: 20px;
-        width: 40px;
-        height: 40px;
-    }
-}
+        .back-to-top:hover {
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 0 25px var(--accent);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .float-buttons {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .instagram-float {
+                bottom: 20px;
+                left: 20px;
+            }
+            
+            .float-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+            
+            .back-to-top {
+                bottom: 90px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+            }
+        }
         
         /* Responsive */
         @media (max-width: 1200px) {
@@ -1503,7 +1480,7 @@
                 left: -100%;
                 width: 80%;
                 height: 100vh;
-                background: var(--secondary);
+                background: var(--primary);
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
@@ -1540,27 +1517,6 @@
             .portfolio-grid {
                 grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             }
-            
-            .instagram-float {
-                left: 20px;
-                bottom: 20px;
-                width: 60px;
-                height: 60px;
-                font-size: 26px;
-            }
-            
-            .whatsapp-float {
-                right: 20px;
-                bottom: 20px;
-                width: 60px;
-                height: 60px;
-                font-size: 26px;
-            }
-            
-            .back-to-top {
-                right: 20px;
-                bottom: 100px;
-            }
         }
         
         @media (max-width: 576px) {
@@ -1593,16 +1549,13 @@
     </style>
 </head>
 <body>
-    <!-- Floating Particles -->
-    <div class="particles" id="particles"></div>
-    
     <!-- Header -->
     <header id="header">
         <div class="container">
             <div class="header-container">
                 <a href="#" class="logo">
                     <img src="assets/logo.png" alt="LightFX Studio">
-                    <span class="logo-text">LightFX <span>Studio</span></span>
+                    <span class="logo-text">LIGHTFX <span>STUDIO</span></span>
                 </a>
                 
                 <nav>
@@ -1611,7 +1564,7 @@
                         <li><a href="#about">About</a></li>
                         <li><a href="#services">Services</a></li>
                         <li><a href="#portfolio">Portfolio</a></li>
-                        <li><a href="#feedback">Feedback</a></li>
+                        <li><a href="#reviews">Reviews</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </nav>
@@ -1625,11 +1578,21 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <!-- Background Images that will change on scroll -->
-        <div class="hero-bg active" style="background-image: url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1630&q=80')"></div>
-        <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1508693926297-1d61ee3df82a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')"></div>
-        <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')"></div>
-        <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1630&q=80')"></div>
+        <!-- Image Slider -->
+        <div class="slider-container">
+            <div class="slider" id="slider">
+                <div class="slide slide-1"></div>
+                <div class="slide slide-2"></div>
+                <div class="slide slide-3"></div>
+                <div class="slide slide-4"></div>
+            </div>
+            <div class="slider-nav" id="sliderNav">
+                <div class="slider-dot active" data-slide="0"></div>
+                <div class="slider-dot" data-slide="1"></div>
+                <div class="slider-dot" data-slide="2"></div>
+                <div class="slider-dot" data-slide="3"></div>
+            </div>
+        </div>
         
         <div class="hero-content">
             <p class="hero-subtitle">Luxury Photography in Surat</p>
@@ -1655,7 +1618,7 @@
         <div class="container">
             <div class="section-title">
                 <p>Our Vision</p>
-                <h2>About LightFX Studio</h2>
+                <h2>About LIGHTFX STUDIO</h2>
             </div>
             
             <div class="about-content">
@@ -1665,7 +1628,7 @@
                 
                 <div class="about-text">
                     <h3>Where Elegance Meets Art</h3>
-                    <p>Welcome to LightFX Studio, where we create visual masterpieces with a luxurious touch. Our state-of-the-art studio in Varachha combines premium technology with artistic vision to create images that stand the test of time.</p>
+                    <p>Welcome to LIGHTFX STUDIO, where we create visual masterpieces with a luxurious touch. Our state-of-the-art studio in Varachha combines premium technology with artistic vision to create images that stand the test of time.</p>
                     <p>We specialize in high-end techniques that bring out the beauty in every subject while maintaining the highest standards of quality and sophistication.</p>
                     <p>Our team of experienced photographers understands both classic elegance and modern trends, ensuring your photos are both timeless and contemporary.</p>
                 </div>
@@ -1674,7 +1637,7 @@
     </section>
 
     <!-- Parallax Section 2 -->
-    <section class="parallax-section" style="background-image: url('https://images.unsplash.com/photo-1529633980621-1f58b8a9a3f9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')">
+    <section class="parallax-section" style="background-image: url('assets/bg1.JPG')">
         <div class="parallax-content">
             <h2>Premium Quality</h2>
             <p>Every image crafted with meticulous attention to detail</p>
@@ -1750,7 +1713,7 @@
     </section>
 
     <!-- Parallax Section 3 -->
-    <section class="parallax-section" style="background-image: url('https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')">
+    <section class="parallax-section" style="background-image: url('assets/bg2.png')">
         <div class="parallax-content">
             <h2>Timeless Memories</h2>
             <p>Creating images that you'll treasure for generations</p>
@@ -1876,52 +1839,26 @@
         </div>
     </section>
 
-    <!-- Client Feedback Section -->
-    <section class="section feedback" id="feedback">
+    <!-- Google Reviews Section -->
+    <section class="section google-reviews" id="reviews">
         <div class="container">
             <div class="section-title">
                 <p>Client Experiences</p>
-                <h2>What Our Clients Say</h2>
+                <h2>Google Reviews</h2>
             </div>
             
-            <div class="feedback-grid">
-                <div class="feedback-card">
-                    <p class="feedback-text">"The wedding album was beyond anything we imagined. Our relatives can't stop talking about how elegant and timeless the photos look. LightFX captured our special day with such sophistication!"</p>
-                    <div class="feedback-author">
-                        <div class="author-img">
-                            <img src="assets/client1.jpg" alt="Mrs. Patel">
-                        </div>
-                        <div class="author-info">
-                            <h4>Mrs. Patel</h4>
-                            <p>Wedding Photography</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="feedback-card">
-                    <p class="feedback-text">"Our product sales increased by 40% after the professional photos LightFX created. The images perfectly captured the luxury and quality of our jewelry line."</p>
-                    <div class="feedback-author">
-                        <div class="author-img">
-                            <img src="assets/client2.jpg" alt="Mr. Shah">
-                        </div>
-                        <div class="author-info">
-                            <h4>Mr. Shah</h4>
-                            <p>Jewelry Business Owner</p>
+            <div class="reviews-container" id="googleReviews">
+                <!-- Reviews will be loaded via JavaScript -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://via.placeholder.com/60" alt="Client" class="review-avatar">
+                        <div>
+                            <div class="review-author">Loading reviews...</div>
+                            <div class="review-stars">★★★★★</div>
+                            <div class="review-date">Just now</div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="feedback-card">
-                    <p class="feedback-text">"The family portrait is our most treasured possession. The lighting and composition make it look like a work of art we'll pass down for generations."</p>
-                    <div class="feedback-author">
-                        <div class="author-img">
-                            <img src="assets/client3.jpg" alt="The Desai Family">
-                        </div>
-                        <div class="author-info">
-                            <h4>Desai Family</h4>
-                            <p>Family Portrait</p>
-                        </div>
-                    </div>
+                    <div class="review-text">We're fetching the latest reviews from Google. Please wait a moment.</div>
                 </div>
             </div>
         </div>
@@ -1946,7 +1883,7 @@
                         </div>
                         <div class="contact-item-text">
                             <h4>Our Address</h4>
-                            <p>Lightfx Studio, Shop No.3, Near Harigar Farshan, Trikamnagar-2, Varachha, Surat</p>
+                            <p>LIGHTFX STUDIO, Shop No.3, Near Harigar Farshan, Trikamnagar-2, Varachha, Surat</p>
                         </div>
                     </div>
                     
@@ -1990,25 +1927,25 @@
                 </div>
                 
                 <div class="contact-form">
-                    <form id="contactForm" action="form-handler.php" method="POST">
+                    <form id="contactForm" action="https://formspree.io/f/your-form-id" method="POST">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Your Name" required>
+                            <input type="text" class="form-control" name="name" placeholder="Your Name" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" class="form-control" placeholder="Phone Number" required>
+                            <input type="tel" class="form-control" name="phone" placeholder="Phone Number" required>
                         </div>
                         <div class="form-group">
-                            <select class="form-control">
+                            <select class="form-control" name="service" required>
                                 <option value="">Select Service</option>
-                                <option>Wedding Photography</option>
-                                <option>Event Cinematography</option>
-                                <option>Family Portraits</option>
-                                <option>Product Photography</option>
-                                <option>Other Service</option>
+                                <option value="Wedding Photography">Wedding Photography</option>
+                                <option value="Event Cinematography">Event Cinematography</option>
+                                <option value="Family Portraits">Family Portraits</option>
+                                <option value="Product Photography">Product Photography</option>
+                                <option value="Other Service">Other Service</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" placeholder="Your Vision" required></textarea>
+                            <textarea class="form-control" name="message" placeholder="Your Vision" required></textarea>
                         </div>
                         <button type="submit" class="submit-btn">Send Message</button>
                     </form>
@@ -2023,7 +1960,7 @@
             <div class="footer-container">
                 <div class="footer-col">
                     <a href="#" class="logo">
-                        <img src="assets/logo-white.png" alt="LightFX Studio" style="height: 60px; margin-bottom: 20px; filter: drop-shadow(0 0 10px var(--accent))">
+                        <img src="assets/logo.png" alt="LIGHTFX STUDIO" style="height: 60px; margin-bottom: 20px;">
                     </a>
                     <p>Creating timeless, luxurious photography in Surat. Combining premium technology with artistic vision to create memories that last lifetimes.</p>
                     <div class="footer-social">
@@ -2040,7 +1977,7 @@
                         <li><a href="#about">About Us</a></li>
                         <li><a href="#services">Services</a></li>
                         <li><a href="#portfolio">Portfolio</a></li>
-                        <li><a href="#feedback">Client Feedback</a></li>
+                        <li><a href="#reviews">Reviews</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
@@ -2059,38 +1996,39 @@
                 <div class="footer-col footer-map-col">
                     <h3>Our Location</h3>
                     <div class="footer-map">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3719.123456789012!2d72.12345678901234!3d21.123456789012345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDA3JzI0LjQiTiA3MsKwMDcnMjQuNCJF!5e0!3m2!1sen!2sin!4v1234567890123" allowfullscreen="" loading="lazy"></iframe>
+                        <!-- Updated Google Maps embed with exact location -->
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3719.123456789012!2d72.12345678901234!3d21.123456789012345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDA3JzI0LjQiTiA3MsKwMDcnMjQuNCJF!5e0!3m2!1sen!2sin!4v1234567890123" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
-                    <p style="margin-top: 20px;">Lightfx Studio, Shop No.3, Near Harigar Farshan, Trikamnagar-2, Varachha, Surat</p>
+                    <p style="margin-top: 20px;">LIGHTFX STUDIO, Shop No.3, Near Harigar Farshan, Trikamnagar-2, Varachha, Surat</p>
                 </div>
             </div>
             
             <div class="copyright">
-                &copy; 2025 LightFX Studio. All Rights Reserved. | 
+                &copy; 2025 LIGHTFX STUDIO. All Rights Reserved. | 
                 <a href="privacy-policy.html"> Privacy Policy</a> | 
                 <a href="terms-of-service.html">Terms of Service</a>
             </div>
         </div>
     </footer>
 
- <!-- WhatsApp Button -->
-<div class="float-buttons">
-    <a href="https://wa.me/919904920480" class="float-btn whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-    
-    <!-- Back to Top Button -->
-    <a href="#" class="back-to-top" id="backToTop">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-</div>
+    <!-- WhatsApp Button -->
+    <div class="float-buttons">
+        <a href="https://wa.me/919904920480" class="float-btn whatsapp-float" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        
+        <!-- Back to Top Button -->
+        <a href="#" class="back-to-top" id="backToTop">
+            <i class="fas fa-arrow-up"></i>
+        </a>
+    </div>
 
-<!-- Instagram Button -->
-<div class="instagram-float">
-    <a href="https://www.instagram.com/lightfxstudio/" class="float-btn" target="_blank">
-        <i class="fab fa-instagram"></i>
-    </a>
-</div>
+    <!-- Instagram Button -->
+    <div class="instagram-float">
+        <a href="https://www.instagram.com/lightfxstudio/" class="float-btn" target="_blank">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
 
     <!-- JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -2157,93 +2095,161 @@
             });
         });
         
-// Navbar Scroll Effect
-window.addEventListener('scroll', function() {
-    if (window.scrollY > 100) {
-        document.getElementById('header').classList.add('scrolled');
-    } else {
-        document.getElementById('header').classList.remove('scrolled');
-    }
-}); // <-- This was missing
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 100) {
+                document.getElementById('header').classList.add('scrolled');
+            } else {
+                document.getElementById('header').classList.remove('scrolled');
+            }
+            
+            // Back to top button
+            var backToTop = document.getElementById('backToTop');
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
 
-// Back to Top Button
-window.addEventListener('scroll', function() {
-    var backToTop = document.getElementById('backToTop');
-    if (window.pageYOffset > 300) {
-        backToTop.classList.add('active');
-    } else {
-        backToTop.classList.remove('active');
-    }
-});
-
-// Smooth scroll for back to top
-document.getElementById('backToTop').addEventListener('click', function(e) {
-    e.preventDefault();
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-});
+        // Back to top button click
+        document.getElementById('backToTop').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
         
         // Form Submission
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            
+            // Simple form validation
+            const formData = new FormData(this);
+            let isValid = true;
+            
+            formData.forEach((value, key) => {
+                if (!value.trim()) {
+                    isValid = false;
+                    const input = this.querySelector(`[name="${key}"]`);
+                    input.style.borderColor = '#ff6b6b';
+                    input.addEventListener('input', function() {
+                        this.style.borderColor = '';
+                    });
+                }
+            });
+            
+            if (!isValid) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            // Here you would normally send the form data to your server
+            // For demo purposes, we'll just show a success message
             alert('Thank you for your message! We will contact you soon.');
             this.reset();
         });
         
-        // Create floating particles
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 50;
+        // Image Slider
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.slider-dot');
+        const slider = document.getElementById('slider');
+        
+        function showSlide(index) {
+            slider.style.transform = `translateX(-${index * 100}%)`;
             
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                
-                // Random size between 1px and 3px
-                const size = Math.random() * 2 + 1;
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                
-                // Random position
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.top = `${Math.random() * 100}%`;
-                
-                // Random animation duration between 10s and 20s
-                const duration = Math.random() * 10 + 10;
-                particle.style.animationDuration = `${duration}s`;
-                
-                // Random delay
-                particle.style.animationDelay = `${Math.random() * 10}s`;
-                
-                particlesContainer.appendChild(particle);
-            }
+            // Update dots
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[index].classList.add('active');
+            
+            currentSlide = index;
         }
         
-        // Background image changer on scroll
-        function initBackgroundChanger() {
-            const backgrounds = document.querySelectorAll('.hero-bg');
-            let currentIndex = 0;
+        // Click on dots
+        dots.forEach(dot => {
+            dot.addEventListener('click', function() {
+                const slideIndex = parseInt(this.getAttribute('data-slide'));
+                showSlide(slideIndex);
+            });
+        });
+        
+        // Auto slide change
+        function autoSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+        
+        let slideInterval = setInterval(autoSlide, 5000);
+        
+        // Pause on hover
+        const sliderContainer = document.querySelector('.slider-container');
+        sliderContainer.addEventListener('mouseenter', () => {
+            clearInterval(slideInterval);
+        });
+        
+        sliderContainer.addEventListener('mouseleave', () => {
+            slideInterval = setInterval(autoSlide, 5000);
+        });
+        
+        // Load Google Reviews
+        function loadGoogleReviews() {
+            // In a real implementation, you would fetch reviews from Google Places API
+            // This is a mock implementation for demonstration
             
-            function changeBackground() {
-                backgrounds[currentIndex].classList.remove('active');
-                currentIndex = (currentIndex + 1) % backgrounds.length;
-                backgrounds[currentIndex].classList.add('active');
-            }
-            
-            // Change background every 5 seconds
-            setInterval(changeBackground, 5000);
-            
-            // Also change on scroll
-            let lastScrollPosition = 0;
-            window.addEventListener('scroll', function() {
-                const currentScrollPosition = window.pageYOffset;
-                
-                if (Math.abs(currentScrollPosition - lastScrollPosition) > 100) {
-                    changeBackground();
-                    lastScrollPosition = currentScrollPosition;
+            const reviews = [
+                {
+                    author: "Rahul Patel",
+                    rating: 5,
+                    text: "The wedding album was beyond anything we imagined. Our relatives can't stop talking about how elegant and timeless the photos look. LIGHTFX STUDIO captured our special day with such sophistication!",
+                    date: "2 weeks ago",
+                    avatar: "https://randomuser.me/api/portraits/men/32.jpg"
+                },
+                {
+                    author: "Priya Shah",
+                    rating: 5,
+                    text: "Our product sales increased by 40% after the professional photos LIGHTFX STUDIO created. The images perfectly captured the luxury and quality of our jewelry line.",
+                    date: "1 month ago",
+                    avatar: "https://randomuser.me/api/portraits/women/44.jpg"
+                },
+                {
+                    author: "The Desai Family",
+                    rating: 5,
+                    text: "The family portrait is our most treasured possession. The lighting and composition make it look like a work of art we'll pass down for generations.",
+                    date: "3 months ago",
+                    avatar: "https://randomuser.me/api/portraits/women/63.jpg"
+                },
+                {
+                    author: "Amit Kumar",
+                    rating: 5,
+                    text: "Exceptional service and stunning results. The team at LIGHTFX STUDIO made us feel comfortable throughout the shoot and delivered beyond our expectations.",
+                    date: "2 months ago",
+                    avatar: "https://randomuser.me/api/portraits/men/22.jpg"
                 }
+            ];
+            
+            const reviewsContainer = document.getElementById('googleReviews');
+            reviewsContainer.innerHTML = '';
+            
+            reviews.forEach(review => {
+                const stars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
+                
+                const reviewCard = document.createElement('div');
+                reviewCard.className = 'review-card';
+                reviewCard.innerHTML = `
+                    <div class="review-header">
+                        <img src="${review.avatar}" alt="${review.author}" class="review-avatar">
+                        <div>
+                            <div class="review-author">${review.author}</div>
+                            <div class="review-stars">${stars}</div>
+                            <div class="review-date">${review.date}</div>
+                        </div>
+                    </div>
+                    <div class="review-text">${review.text}</div>
+                `;
+                
+                reviewsContainer.appendChild(reviewCard);
             });
         }
         
@@ -2329,9 +2335,8 @@ document.getElementById('backToTop').addEventListener('click', function(e) {
         
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', function() {
-            createParticles();
-            initBackgroundChanger();
             initAnimations();
+            loadGoogleReviews();
         });
     </script>
 </body>
